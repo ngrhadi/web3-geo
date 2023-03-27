@@ -2,18 +2,21 @@ import { Typography } from '@material-tailwind/react';
 
 export default function Footer() {
   return (
-    <div className="max-w-screen-2xl mx-auto">
-      <footer className="relative  flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-6 px-5 text-center md:justify-between">
-        <Typography color="blue-gray" className="font-normal">
+    <div className="max-w-screen-2xl mx-auto sticky">
+      <footer className="relative flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-6 px-3 lg:px-16 text-center md:justify-between">
+        <Typography
+          color="blue-gray"
+          className="font-normal text-sm lg:text-md"
+        >
           &copy; 2023 SWH
         </Typography>
-        <ul className="flex flex-wrap items-center gap-y-2 gap-x-8 justify-center">
+        <ul className="flex flex-wrap items-center gap-y-2 gap-x-3 lg:gap-x-8 justify-center">
           <li>
             <Typography
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-green-500 focus:text-green-500"
+              className="font-normal transition-colors hover:text-green-500 focus:text-green-500 text-sm lg:text-md"
             >
               About Us
             </Typography>
@@ -23,7 +26,7 @@ export default function Footer() {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-green-500 focus:text-green-500"
+              className="font-normal transition-colors hover:text-green-500 focus:text-green-500 text-sm lg:text-md"
             >
               License
             </Typography>
@@ -33,7 +36,7 @@ export default function Footer() {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-green-500 focus:text-green-500"
+              className="font-normal transition-colors hover:text-green-500 focus:text-green-500 text-sm lg:text-md"
             >
               Contribute
             </Typography>
@@ -43,7 +46,7 @@ export default function Footer() {
               as="a"
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-green-500 focus:text-green-500"
+              className="font-normal transition-colors hover:text-green-500 focus:text-green-500 text-sm lg:text-md"
             >
               Contact Us
             </Typography>
