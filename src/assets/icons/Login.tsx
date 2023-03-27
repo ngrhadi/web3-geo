@@ -4,7 +4,7 @@ const LoginIcon = () => {
   return (
     <div>
       <svg
-        className="h-8 w-8 text-blue-gray-700 hover:text-green-500"
+        className="h-8 w-8 text-blue-gray-700 hover:text-black"
         width="24"
         height="24"
         viewBox="0 0 24 24"

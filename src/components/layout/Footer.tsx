@@ -6,7 +6,7 @@ export default function Footer() {
       <footer className="relative flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-blue-gray-50 py-6 px-3 lg:px-16 text-center md:justify-between">
         <Typography
           color="blue-gray"
-          className="font-normal text-sm lg:text-md"
+          className="hidden lg:block md:block font-normal text-sm lg:text-md"
         >
           &copy; 2023 SWH
         </Typography>
@@ -14,9 +14,9 @@ export default function Footer() {
           <li>
             <Typography
               as="a"
-              href="#"
+              href="/about-us"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-green-500 focus:text-green-500 text-sm lg:text-md"
+              className="font-normal transition-colors hover:text-white focus:text-white text-sm lg:text-md"
             >
               About Us
             </Typography>
@@ -24,9 +24,9 @@ export default function Footer() {
           <li>
             <Typography
               as="a"
-              href="#"
+              href="/license"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-green-500 focus:text-green-500 text-sm lg:text-md"
+              className="font-normal transition-colors hover:text-white focus:text-white text-sm lg:text-md"
             >
               License
             </Typography>
@@ -34,9 +34,9 @@ export default function Footer() {
           <li>
             <Typography
               as="a"
-              href="#"
+              href="/contribute"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-green-500 focus:text-green-500 text-sm lg:text-md"
+              className="font-normal transition-colors hover:text-white focus:text-white text-sm lg:text-md"
             >
               Contribute
             </Typography>
@@ -44,9 +44,9 @@ export default function Footer() {
           <li>
             <Typography
               as="a"
-              href="#"
+              href="/contac-us"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-green-500 focus:text-green-500 text-sm lg:text-md"
+              className="font-normal transition-colors hover:text-white focus:text-white text-sm lg:text-md"
             >
               Contact Us
             </Typography>

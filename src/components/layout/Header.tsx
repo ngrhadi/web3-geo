@@ -9,13 +9,13 @@ import {
 } from '@material-tailwind/react';
 import Link from 'next/link';
 import React from 'react';
-import logo from '../../assets/geo.jpg';
+import logo from '../../assets/geo1.jpg';
 import Image from 'next/image';
 
 const Header = () => {
   return (
-    <div className="bg-zinc-700/40 sticky top-0">
-      <header className="lg:w-screen max-w-screen-2xl mx-auto h-20 justify-between flex flex-row items-center text-sm lg:text-lg">
+    <div className="bg-zinc-700/40 sticky top-0 bg-[#5EAB44]">
+      <header className="lg:w-screen max-w-screen-2xl mx-auto h-14 lg:h-20 justify-between flex flex-row items-center text-sm lg:text-lg">
         <div className="flex flex-row gap-5 pl-5 lg:pl-20 items-center">
           <div className="lg:hidden sm:flex md:flex sm:flex-row md:flex-row">
             <Menu placement="bottom-start">
@@ -26,16 +26,13 @@ const Header = () => {
               </MenuHandler>
               <MenuList className="border-none max-w-fit min-w-fit bg-green-700 z-50">
                 <MenuItem className="text-start">
-                  <Link
-                    className="text-blue-gray-200 hover:text-green-500"
-                    href="/"
-                  >
+                  <Link className="text-gray-800 hover:text-green-500" href="/">
                     Home
                   </Link>
                 </MenuItem>
                 <MenuItem className="text-start">
                   <Link
-                    className="text-blue-gray-200 hover:text-green-500"
+                    className="text-gray-800 hover:text-green-500"
                     href="/docs"
                   >
                     Docs
@@ -43,7 +40,7 @@ const Header = () => {
                 </MenuItem>
                 <MenuItem className="text-start">
                   <Link
-                    className="text-blue-gray-200 hover:text-green-500"
+                    className="text-gray-800 hover:text-green-500"
                     href="/service"
                   >
                     Services
@@ -51,7 +48,7 @@ const Header = () => {
                 </MenuItem>
                 <MenuItem className="text-start">
                   <Link
-                    className="text-blue-gray-200 hover:text-green-500"
+                    className="text-gray-800 hover:text-green-500"
                     href="/maps"
                   >
                     Maps
@@ -66,32 +63,23 @@ const Header = () => {
               width={80}
               height={10}
               alt="logo-geo"
-              className="rotate-6"
+              className="rotate-0 lg:rotate-6"
             />
           </div>
           <div className="lg:flex xl:flex 2xl:flex flex-row gap-5 md:hidden sm:hidden hidden">
-            <Link
-              className="text-blue-gray-700 hover:text-green-500 bg-transparent"
-              href="/"
-            >
+            <Link className="text-blue-gray-700 hover:text-black" href="/">
               Home
             </Link>
-            <Link
-              className="text-blue-gray-700 hover:text-green-500"
-              href="/docs"
-            >
+            <Link className="text-blue-gray-700 hover:text-black" href="/docs">
               Docs
             </Link>
             <Link
-              className="text-blue-gray-700 hover:text-green-500"
+              className="text-blue-gray-700 hover:text-black"
               href="/service"
             >
               Services
             </Link>
-            <Link
-              className="text-blue-gray-700 hover:text-green-500"
-              href="/maps"
-            >
+            <Link className="text-blue-gray-700 hover:text-black" href="/maps">
               Maps
             </Link>
           </div>
@@ -104,10 +92,10 @@ const Header = () => {
                   <LoginIcon />
                 </button>
               </MenuHandler>
-              <MenuList className="border-none max-w-fit min-w-fit bg-white/10 z-50">
+              <MenuList className="border-none max-w-fit min-w-fit bg-green-700 z-50">
                 <MenuItem className="text-center">
                   <Link
-                    className="text-blue-gray-700 hover:text-green-500"
+                    className="text-blue-gray-800 hover:text-green-500"
                     href="/signup"
                   >
                     Sign Up
@@ -115,7 +103,7 @@ const Header = () => {
                 </MenuItem>
                 <MenuItem className="text-center">
                   <Link
-                    className="text-blue-gray-700 hover:text-green-500"
+                    className="text-blue-gray-800 hover:text-green-500"
                     href="/login"
                   >
                     Login
@@ -126,15 +114,12 @@ const Header = () => {
           </div>
           <div className="lg:flex xl:flex 2xl:flex flex-row gap-5 md:hidden sm:hidden hidden">
             <Link
-              className="text-blue-gray-700 hover:text-green-500"
+              className="text-blue-gray-700 hover:text-black"
               href="/signup"
             >
               Sign Up
             </Link>
-            <Link
-              className="text-blue-gray-700 hover:text-green-500"
-              href="/login"
-            >
+            <Link className="text-blue-gray-700 hover:text-black" href="/login">
               Login
             </Link>
           </div>
