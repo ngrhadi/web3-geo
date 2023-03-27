@@ -18,7 +18,7 @@ const Layout = ({ children }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <div className="pt-10 min-h-max max-h-full py-20 max-w-2xl mx-auto px-5 overflow-y-auto">
+      <div className="pt-2 min-h-max max-h-full py-20 max-w-2xl lg:max-w-screen-2xl mx-auto px-5 overflow-y-auto">
         {children}
       </div>
       <div className="absolute bottom-0 w-screen bg-zinc-700/40">
