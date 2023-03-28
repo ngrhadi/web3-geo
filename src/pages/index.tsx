@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Layout from '@/components/layout/Layout';
 import UserInfo from '@/components/users/UserInfo';
-import { useSession } from '@supabase/auth-helpers-react';
+import useSupabase from '@/hooks/useSupabase';
 
 interface HomeProps {
   address: string;
@@ -9,7 +9,7 @@ interface HomeProps {
 }
 
 export default function Home({ address, isLogin }: HomeProps) {
-  const session = useSession();
+  const { session } = useSupabase();
 
   return (
     <>
