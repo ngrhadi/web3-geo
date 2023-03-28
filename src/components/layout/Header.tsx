@@ -102,7 +102,7 @@ const Header = () => {
               />
               <div>
                 <button
-                  className="button block"
+                  className="buttonSB block"
                   onClick={() => supabase.auth.signOut()}
                 >
                   Sign Out

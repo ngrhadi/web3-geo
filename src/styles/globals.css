@@ -240,8 +240,8 @@ input[disabled] {
 
 /* Button */
 
-button,
-.button {
+buttonSB,
+.buttonSB {
   color: var(--custom-color);
   border: var(--custom-border);
   background-color: var(--custom-bg-color);
@@ -255,8 +255,8 @@ button,
   text-transform: uppercase;
 }
 
-button.primary,
-.button.primary {
+buttonSB.primary,
+.buttonSB.primary {
   background-color: var(--custom-color-brand);
   border: 1px solid var(--custom-color-brand);
 }

@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 import { useRef, useState } from 'react';
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import { SessionContextProvider, Session } from '@supabase/auth-helpers-react';
+import { useClientSB } from '@/lib/client';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,12 +19,7 @@ export default function App({
   initialSession: Session;
 }>) {
   const store = useRef(usersStore());
-  const [supabase] = useState(() =>
-    createBrowserSupabaseClient({
-      supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
-      supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    })
-  );
+  const { supabase } = useClientSB();
 
   return (
     <main className={`${inter.variable} font-sans`}>

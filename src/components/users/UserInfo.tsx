@@ -34,15 +34,13 @@ export default function UserInfo({ session }: { session: Session }) {
 
       {/* <div>
         <button
-          className="button primary block"
+          className="buttonSB primary block"
           onClick={() => updateProfile({ username, website, avatar_url })}
           disabled={loading}
         >
           {loading ? 'Loading ...' : 'Update'}
         </button>
       </div> */}
-
-
     </div>
   );
 }
