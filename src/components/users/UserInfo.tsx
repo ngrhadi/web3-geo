@@ -42,14 +42,7 @@ export default function UserInfo({ session }: { session: Session }) {
         </button>
       </div> */}
 
-      {/* <div>
-        <button
-          className="button block"
-          onClick={() => supabase.auth.signOut()}
-        >
-          Sign Out
-        </button>
-      </div> */}
+
     </div>
   );
 }

@@ -98,6 +98,7 @@ const useSupabase = () => {
   }
 
   return {
+    supabase,
     loading,
     username,
     website,

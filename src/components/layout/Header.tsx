@@ -11,10 +11,11 @@ import Link from 'next/link';
 import React from 'react';
 import logo from '../../assets/geo1.jpg';
 import Image from 'next/image';
-import { useSession } from '@supabase/auth-helpers-react';
+import Avatar from '../users/AvatarUser';
+import useSupabase from '@/hooks/useSupabase';
 
 const Header = () => {
-  const session = useSession();
+  const { session, avatar_url, username, website, supabase } = useSupabase();
 
   return (
     <div className="bg-zinc-700/40 sticky top-0 bg-[#5EAB44]">
@@ -88,44 +89,71 @@ const Header = () => {
           </div>
         </div>
         <div className="flex flex-row gap-5 pr-5 lg:pr-20">
-          <div className="lg:hidden sm:flex md:flex">
-            <Menu placement="bottom-end">
-              <MenuHandler>
-                <button className="bg-transparent active:bg-transparent hover:bg-transparent after:bg-transparent before:bg-transparent">
-                  <LoginIcon />
+          {session ? (
+            <>
+              <Avatar
+                uid={session.user.id}
+                url={avatar_url}
+                size={43}
+                // onUpload={(url) => {
+                //   setAvatarUrl(url);
+                //   updateProfile({ username, website, avatar_url: url });
+                // }}
+              />
+              <div>
+                <button
+                  className="button block"
+                  onClick={() => supabase.auth.signOut()}
+                >
+                  Sign Out
                 </button>
-              </MenuHandler>
-              <MenuList className="border-none max-w-fit min-w-fit bg-green-700 z-50">
-                <MenuItem className="text-center">
-                  <Link
-                    className="text-blue-gray-800 hover:text-green-500"
-                    href="/signup"
-                  >
-                    Sign Up
-                  </Link>
-                </MenuItem>
-                <MenuItem className="text-center">
-                  <Link
-                    className="text-blue-gray-800 hover:text-green-500"
-                    href="/login"
-                  >
-                    Login
-                  </Link>
-                </MenuItem>
-              </MenuList>
-            </Menu>
-          </div>
-          <div className="lg:flex xl:flex 2xl:flex flex-row gap-5 md:hidden sm:hidden hidden">
-            <Link
-              className="text-blue-gray-700 hover:text-black"
-              href="/signup"
-            >
-              Sign Up
-            </Link>
-            <Link className="text-blue-gray-700 hover:text-black" href="/login">
-              Login
-            </Link>
-          </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="lg:hidden sm:flex md:flex">
+                <Menu placement="bottom-end">
+                  <MenuHandler>
+                    <button className="bg-transparent active:bg-transparent hover:bg-transparent after:bg-transparent before:bg-transparent">
+                      <LoginIcon />
+                    </button>
+                  </MenuHandler>
+                  <MenuList className="border-none max-w-fit min-w-fit bg-green-700 z-50">
+                    <MenuItem className="text-center">
+                      <Link
+                        className="text-blue-gray-800 hover:text-green-500"
+                        href="/signup"
+                      >
+                        Sign Up
+                      </Link>
+                    </MenuItem>
+                    <MenuItem className="text-center">
+                      <Link
+                        className="text-blue-gray-800 hover:text-green-500"
+                        href="/login"
+                      >
+                        Login
+                      </Link>
+                    </MenuItem>
+                  </MenuList>
+                </Menu>
+              </div>
+              <div className="lg:flex xl:flex 2xl:flex flex-row gap-5 md:hidden sm:hidden hidden">
+                <Link
+                  className="text-blue-gray-700 hover:text-black"
+                  href="/signup"
+                >
+                  Sign Up
+                </Link>
+                <Link
+                  className="text-blue-gray-700 hover:text-black"
+                  href="/login"
+                >
+                  Login
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </header>
     </div>
