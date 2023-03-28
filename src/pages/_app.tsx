@@ -7,10 +7,13 @@ import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import { SessionContextProvider, Session } from '@supabase/auth-helpers-react';
 import { useClientSB } from '@/lib/client';
 
+import { createClient } from '@supabase/supabase-js';
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 });
+
 
 export default function App({
   Component,
@@ -18,8 +21,10 @@ export default function App({
 }: AppProps<{
   initialSession: Session;
 }>) {
+  const supabaseUrl = 'https://sifozohvccpktbfhrvmb.supabase.co';
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
+  const supabase = createClient(supabaseUrl, supabaseKey);
   const store = useRef(usersStore());
-  const { supabase } = useClientSB();
 
   return (
     <main className={`${inter.variable} font-sans`}>
