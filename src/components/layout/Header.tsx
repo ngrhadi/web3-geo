@@ -11,8 +11,11 @@ import Link from 'next/link';
 import React from 'react';
 import logo from '../../assets/geo1.jpg';
 import Image from 'next/image';
+import { useSession } from '@supabase/auth-helpers-react';
 
 const Header = () => {
+  const session = useSession();
+
   return (
     <div className="bg-zinc-700/40 sticky top-0 bg-[#5EAB44]">
       <header className="lg:w-screen max-w-screen-2xl mx-auto h-14 lg:h-20 justify-between flex flex-row items-center text-sm lg:text-lg">
