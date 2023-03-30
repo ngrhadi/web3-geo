@@ -15,7 +15,7 @@ export default function Home({ address, isLogin }: HomeProps) {
     <>
       <Layout>
         <div className="pt-10 min-h-max max-h-full py-20">
-          <UserInfo session={session} />
+          {/* <UserInfo session={session} /> */}
           <blockquote className="text-2xl font-semibold italic text-center text-slate-400/70 ">
             Something
             <span className="before:block before:absolute before:-inset-2 before:-skew-x-12 before:bg-green-500 relative inline-block mx-3">
