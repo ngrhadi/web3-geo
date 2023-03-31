@@ -2,6 +2,7 @@
   "name": "web3-geo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://web3-geo.vercel.app/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
