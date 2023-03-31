@@ -1,4 +1,5 @@
 import { Typography } from '@material-tailwind/react';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -12,44 +13,36 @@ export default function Footer() {
         </Typography>
         <ul className="flex flex-wrap items-center gap-y-2 gap-x-3 lg:gap-x-8 justify-center">
           <li>
-            <Typography
-              as="a"
+            <Link
               href="/about-us"
-              color="blue-gray"
-              className="font-normal transition-colors hover:text-white focus:text-white text-sm lg:text-md"
+              className="font-normal text-blue-gray-700 transition-colors hover:text-white focus:text-white text-sm lg:text-md"
             >
               About Us
-            </Typography>
+            </Link>
           </li>
           <li>
-            <Typography
-              as="a"
+            <Link
               href="/license"
-              color="blue-gray"
-              className="font-normal transition-colors hover:text-white focus:text-white text-sm lg:text-md"
+              className="font-normal text-blue-gray-700 transition-colors hover:text-white focus:text-white text-sm lg:text-md"
             >
               License
-            </Typography>
+            </Link>
           </li>
           <li>
-            <Typography
-              as="a"
+            <Link
               href="/contribute"
-              color="blue-gray"
-              className="font-normal transition-colors hover:text-white focus:text-white text-sm lg:text-md"
+              className="font-normal text-blue-gray-700 transition-colors hover:text-white focus:text-white text-sm lg:text-md"
             >
               Contribute
-            </Typography>
+            </Link>
           </li>
           <li>
-            <Typography
-              as="a"
-              href="/contac-us"
-              color="blue-gray"
-              className="font-normal transition-colors hover:text-white focus:text-white text-sm lg:text-md"
+            <Link
+              href="/contact-us"
+              className="font-normal text-blue-gray-700 transition-colors hover:text-white focus:text-white text-sm lg:text-md"
             >
               Contact Us
-            </Typography>
+            </Link>
           </li>
         </ul>
       </footer>

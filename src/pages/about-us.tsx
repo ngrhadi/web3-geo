@@ -4,7 +4,7 @@ import React from 'react';
 const Page = () => {
   return (
     <div>
-      <Layout>Docs</Layout>
+      <div>Docs</div>
     </div>
   );
 };

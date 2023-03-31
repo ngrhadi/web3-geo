@@ -1,19 +1,16 @@
-import { MainContex, usersStore } from '@/contexts/UsersContext';
+import { MainContext, usersStore } from '@/contexts/UsersContext';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
-import { useRef, useState } from 'react';
-import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { useRef } from 'react';
 import { SessionContextProvider, Session } from '@supabase/auth-helpers-react';
-import { useClientSB } from '@/lib/client';
-
 import { createClient } from '@supabase/supabase-js';
+import Layout from '@/components/layout/Layout';
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 });
-
 
 export default function App({
   Component,
@@ -21,7 +18,7 @@ export default function App({
 }: AppProps<{
   initialSession: Session;
 }>) {
-  const supabaseUrl = 'https://sifozohvccpktbfhrvmb.supabase.co';
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
   const supabase = createClient(supabaseUrl, supabaseKey);
   const store = useRef(usersStore());
@@ -32,9 +29,11 @@ export default function App({
         supabaseClient={supabase}
         initialSession={pageProps.initialSession}
       >
-        <MainContex.Provider value={store.current}>
-          <Component {...pageProps} />
-        </MainContex.Provider>
+        <Layout>
+          <MainContext.Provider value={store.current}>
+            <Component {...pageProps} />
+          </MainContext.Provider>
+        </Layout>
       </SessionContextProvider>
     </main>
   );

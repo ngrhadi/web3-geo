@@ -24,6 +24,7 @@ const LoginComponent = () => {
   return (
     <div>
       <Auth
+        providers={['github']}
         supabaseClient={supabase}
         appearance={{ theme: ThemeSupa }}
         theme="dark"

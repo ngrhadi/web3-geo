@@ -36,15 +36,15 @@ export const usersStore = () =>
       }),
   }));
 
-export const MainContex = createContext<ReturnType<typeof usersStore> | null>(
+export const MainContext = createContext<ReturnType<typeof usersStore> | null>(
   null
 );
 
 export const useUserInfo = () =>
-  useStore(useContext(MainContex)!, (state) => state.users);
+  useStore(useContext(MainContext)!, (state) => state.users);
 export const useCurrentUser = () =>
-  useStore(useContext(MainContex)!, (state) => state.users.address);
+  useStore(useContext(MainContext)!, (state) => state.users.address);
 export const useUserCount = () =>
-  useStore(useContext(MainContex)!, (state) => state.userCount.length);
+  useStore(useContext(MainContext)!, (state) => state.userCount.length);
 export const useAddressUser = () =>
-  useStore(useContext(MainContex)!, (state) => state.address);
+  useStore(useContext(MainContext)!, (state) => state.address);

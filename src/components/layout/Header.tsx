@@ -8,14 +8,17 @@ import {
   MenuList,
 } from '@material-tailwind/react';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../../assets/geo1.jpg';
 import Image from 'next/image';
 import Avatar from '../users/AvatarUser';
 import useSupabase from '@/hooks/useSupabase';
+import { useRouter } from 'next/router';
 
 const Header = () => {
+  const router = useRouter();
   const { session, avatar_url, username, website, supabase } = useSupabase();
+  const [listMenu, setListMenu] = useState(false);
 
   return (
     <div className="bg-zinc-700/40 sticky top-0 bg-[#5EAB44]">
@@ -68,22 +71,32 @@ const Header = () => {
               height={10}
               alt="logo-geo"
               className="rotate-0 lg:rotate-6"
+              onClick={() => router.push('/')}
             />
           </div>
           <div className="lg:flex xl:flex 2xl:flex flex-row gap-5 md:hidden sm:hidden hidden">
-            <Link className="text-blue-gray-700 hover:text-black" href="/">
+            <Link
+              className="text-blue-gray-700 hover:text-white focus:text-white"
+              href="/"
+            >
               Home
             </Link>
-            <Link className="text-blue-gray-700 hover:text-black" href="/docs">
+            <Link
+              className="text-blue-gray-700 hover:text-white focus:text-white"
+              href="/docs"
+            >
               Docs
             </Link>
             <Link
-              className="text-blue-gray-700 hover:text-black"
+              className="text-blue-gray-700 hover:text-white focus:text-white"
               href="/service"
             >
               Services
             </Link>
-            <Link className="text-blue-gray-700 hover:text-black" href="/maps">
+            <Link
+              className="text-blue-gray-700 hover:text-white focus:text-white"
+              href="/maps"
+            >
               Maps
             </Link>
           </div>
@@ -100,14 +113,6 @@ const Header = () => {
                 //   updateProfile({ username, website, avatar_url: url });
                 // }}
               />
-              <div>
-                <button
-                  className="buttonSB block"
-                  onClick={() => supabase.auth.signOut()}
-                >
-                  Sign Out
-                </button>
-              </div>
             </>
           ) : (
             <>

@@ -2,6 +2,17 @@
 import React, { useEffect, useState } from 'react';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import useSupabase, { Database } from '@/hooks/useSupabase';
+import {
+  Menu,
+  MenuHandler,
+  MenuItem,
+  MenuList,
+} from '@material-tailwind/react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { Avatar as Ava } from '@material-tailwind/react';
+import avaDefault from '@/assets/ava.jpg';
+import Image from 'next/image';
 
 type Profiles = Database['public']['Tables']['profiles']['Row'];
 
@@ -16,8 +27,8 @@ export default function Avatar({
   size: number;
   // onUpload: (url: string) => void;
 }) {
-  // const supabase = useSupabaseClient<Database>();
-  const { avatar_url } = useSupabase();
+  const router = useRouter();
+  const { avatar_url, supabase } = useSupabase();
   // const [avatarUrl, setAvatarUrl] = useState<Profiles['avatar_url']>(null);
   // const [uploading, setUploading] = useState(false);
 
@@ -74,21 +85,49 @@ export default function Avatar({
 
   return (
     <div>
-      {avatar_url?.length !== 0 ? (
-        <>
-          <img
-            src={avatar_url?.toString()}
-            alt="Avatar"
-            className="avatar image"
-            style={{ height: size, width: size }}
-          />
-        </>
-      ) : (
-        <div
-          className="avatar no-image"
-          style={{ height: size, width: size }}
-        />
-      )}
+      <>
+        <Menu placement="bottom-end">
+          <MenuHandler>
+            {avatar_url?.length !== undefined ? (
+              <Ava
+                src={avatar_url?.toString()}
+                alt="avatar"
+                variant="circular"
+                className="hover:cursor-pointer"
+              />
+            ) : (
+              <Image
+                src={avaDefault}
+                alt="avatar"
+                width={40}
+                height={40}
+                className="hover:cursor-pointer rounded-full"
+              />
+            )}
+          </MenuHandler>
+          <MenuList className="border-none max-w-fit min-w-fit bg-green-700 z-50">
+            <MenuItem className="border-none max-w-fit min-w-fit bg-green-700 z-50">
+              <button
+                className="text-blue-gray-800 hover:text-green-500"
+                onClick={() => {
+                  supabase.auth.signOut();
+                  router.push('/');
+                }}
+              >
+                Logout
+              </button>
+            </MenuItem>
+            <MenuItem className="border-none max-w-fit min-w-fit bg-green-700 z-50">
+              <Link
+                className="text-blue-gray-800 hover:text-green-500"
+                href="/profile"
+              >
+                Profile
+              </Link>
+            </MenuItem>
+          </MenuList>
+        </Menu>
+      </>
       {/* <div style={{ width: size }}>
         <label className="buttonSB primary block" htmlFor="single">
           {uploading ? 'Uploading ...' : 'Upload'}

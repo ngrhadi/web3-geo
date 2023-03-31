@@ -5,7 +5,6 @@ import Header from './Header';
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
-import UserInfo from '../users/UserInfo';
 import useSupabase from '@/hooks/useSupabase';
 import Image from 'next/image';
 import logo from '../../assets/geo1.jpg';
@@ -27,7 +26,7 @@ const Layout = ({ children }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {!session ? (
-        <div className="max-w-2xl min-w-full lg:max-w-xl mx-auto min-h-screen max-h-screen items-center pt-20 lg:pt-24 justify-center flex flex-col">
+        <div className="max-w-2xl min-w-full lg:max-w-xl mx-auto min-h-screen max-h-screen items-center pt-20 lg:pt-20 justify-center flex flex-col">
           <Image
             src={logo}
             width={180}
@@ -35,11 +34,27 @@ const Layout = ({ children }: Props) => {
             alt="logo-geo"
             className="rotate-0 lg:rotate-6 pb-24"
           />
-          <div className="min-w-full px-10 lg:px-40">
+          <div className="min-w-full px-10 lg:px-72 mx-auto">
             <Auth
               providers={['github']}
               supabaseClient={supabase}
-              appearance={{ theme: ThemeSupa }}
+              appearance={{
+                theme: ThemeSupa,
+                variables: {
+                  default: {
+                    colors: {
+                      brand: '#5EAB44',
+                      brandAccent: '#5EAB44',
+                      brandButtonText: 'black',
+                      inputLabelText: '#5EAB44',
+                    },
+                    radii: {
+                      borderRadiusButton: '0rem',
+                      inputBorderRadius: '0rem',
+                    },
+                  },
+                },
+              }}
               theme="dark"
             />
           </div>
@@ -47,7 +62,7 @@ const Layout = ({ children }: Props) => {
       ) : (
         <>
           <Header />
-          <div className="pt-2 min-h-max max-h-full py-20 max-w-2xl lg:max-w-screen-2xl mx-auto px-5 overflow-y-auto">
+          <div className="min-h-max max-h-full py-9 max-w-xl lg:max-w-2xl mx-auto px-5 overflow-y-auto block">
             {/* <UserInfo session={session} /> */}
             {children}
           </div>

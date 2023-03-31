@@ -4,6 +4,7 @@ import {
   Session,
   useSession,
 } from '@supabase/auth-helpers-react';
+import { DataHexString } from 'ethers/types/utils/data';
 import React, { useEffect, useState } from 'react';
 
 export interface Database {
@@ -32,9 +33,13 @@ const useSupabase = () => {
   const [username, setUsername] = useState<Profiles['username']>(null);
   const [website, setWebsite] = useState<Profiles['website']>(null);
   const [avatar_url, setAvatarUrl] = useState<Profiles['avatar_url']>(null);
+  const [dataUpdate, setDataUpdate] = useState<
+    DataHexString | string | undefined | any
+  >();
 
   useEffect(() => {
     if (!session) return;
+    setDataUpdate(user?.updated_at);
     getProfile();
   }, [session]);
 
@@ -45,7 +50,7 @@ const useSupabase = () => {
 
       let { data, error, status } = await supabase
         .from('profiles')
-        .select(`username, website, avatar_url`)
+        .select(`username, website, avatar_url, updated_at`)
         .eq('id', user.id)
         .single();
 
@@ -57,6 +62,7 @@ const useSupabase = () => {
         setUsername(data.username);
         setWebsite(data.website);
         setAvatarUrl(data.avatar_url);
+        setDataUpdate(data.updated_at);
       }
     } catch (error) {
       console.log(error);
@@ -86,9 +92,17 @@ const useSupabase = () => {
         updated_at: new Date().toISOString(),
       };
 
-      let { error } = await supabase.from('profiles').upsert(updates);
-      if (error) throw error;
-      alert('Profile updated!');
+      const dateUpdate = new Date(dataUpdate.toString()).getTime() + 30;
+      const dateNow = new Date().getTime();
+
+      console.log(dateUpdate - dateNow);
+      if (dateUpdate - dateNow < -300000) {
+        let { error } = await supabase.from('profiles').upsert(updates);
+        if (error) throw error;
+        alert('Profile updated!');
+      } else {
+        alert('Wait for 15 minutes to update profile');
+      }
     } catch (error) {
       alert('Error updating the data!');
       console.log(error);
@@ -104,6 +118,10 @@ const useSupabase = () => {
     website,
     avatar_url,
     session,
+    setUsername,
+    setWebsite,
+    updateProfile,
+    dataUpdate,
   };
 };
 
