@@ -2,10 +2,11 @@ import { MainContext, usersStore } from '@/contexts/UsersContext';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { SessionContextProvider, Session } from '@supabase/auth-helpers-react';
 import { createClient } from '@supabase/supabase-js';
 import Layout from '@/components/layout/Layout';
+import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,7 +21,8 @@ export default function App({
 }>) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  // const supabase = createClient(supabaseUrl, supabaseKey);
+  const [supabase] = useState(() => createBrowserSupabaseClient());
   const store = useRef(usersStore());
 
   return (
